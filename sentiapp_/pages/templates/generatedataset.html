@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"/>    
+    {% load static %}
+    <link rel="icon" type="image/png" href="{% static 'images/logo1.png' %}">
+    <title>Twitter Sentiment Analysis</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #00717d;">
+        <div class="container">
+            
+            {% load static %}
+            <img src="{% static 'images/logo1.png' %}" alt="Logo" width="85" height="95" class="d-inline-block align-text-top">                
+            
+            <a href="/" class="navbar-brand fs-4">Twitter Sentiment Analysis</a>
+            <br>
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a href="/generatedataset" class="nav-link fs-5 ">Generate Turkish Tweet Dataset</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-3 d-flex justify-content-center">
+        <form method="POST" action="{% url 'generatedataset' %}">
+            {% csrf_token %}
+            <div class="row my-3">
+                <div class="col-md-12">
+                    <div class="form-outline">
+                        <label class="form-label" for="expression">Expression</label>
+                        <input type="text" name="expression" class="form-control" placeholder="Any subject"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-md-12">
+                    <div class="form-outline">
+                        <label class="form-label" for="hashtag">Hashtag</label>
+                        <input type="text" name="hashtag" class="form-control" placeholder="#AnySubject"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-md-12">
+                    <div class="form-outline">
+                        <label class="form-label" for="account">Account</label>
+                        <input type="text" name="account" class="form-control" placeholder="anyaccount123"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-3">
+                <label class="form-label fw-bold" for="since">Since</label>
+                <div class="col-md-4">
+                    <div class="form-outline">
+                        <label class="form-label" for="sinceDay">Day</label>
+                        <input type="text" name="sinceDay" class="form-control" placeholder="01"/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-outline">
+                        <label class="form-label" for="sinceMonth">Month</label>
+                        <input type="text" name="sinceMonth" class="form-control" placeholder="01"/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-outline">
+                        <label class="form-label" for="sinceYear">Year</label>
+                        <input type="tel" name="sinceYear" class="form-control" placeholder="2004"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-3">
+                <label class="form-label fw-bold" for="until">Until</label>
+                <div class="col-md-4">
+                    <div class="form-outline">
+                        <label class="form-label" for="untilDay">Day</label>
+                        <input type="text" name="untilDay" class="form-control" placeholder="01"/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-outline">
+                        <label class="form-label" for="untilMonth">Month</label>
+                        <input type="text" name="untilMonth" class="form-control" placeholder="01"/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-outline">
+                        <label class="form-label" for="untilYear">Year</label>
+                        <input type="tel" name="untilYear" class="form-control" placeholder="2010"/>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-outline mt-3" style="background-color: #69e781;">Generate and Download Dataset</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
+</body>
+</html>

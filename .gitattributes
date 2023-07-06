@@ -1,0 +1,22 @@
+*.pth filter=lfs diff=lfs merge=lfs -text
+*.csv filter=lfs diff=lfs merge=lfs -text
+*.py linguist-language=Python
+*.html linguist-language=HTML
+*.css linguist-language=CSS
+*.js linguist-language=JavaScript
+*.txt linguist-language=Text
+
+*.csv linguist-detectable
+*.json linguist-detectable
+*.xml linguist-detectable
+*.yaml linguist-detectable
+
+# Django
+*.po linguist-language=Gettext Catalog
+*.mo linguist-language=Binary
+
+# NLP
+*.pkl linguist-detectable
+*.model linguist-detectable
+*.h5 linguist-detectable
+*.pt linguist-detectable
